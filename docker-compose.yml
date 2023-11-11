@@ -15,15 +15,12 @@ services:
     env_file: .env
     volumes:
       - static:/backend_static
-    depends_on:
-      - db
   frontend:
     env_file: .env
     build: ./frontend/
-
   gateway:
     build: ./gateway/
     volumes:
-      - static:/backend_static
+      - static:/staticfiles/
     ports:
       - 8000:80
